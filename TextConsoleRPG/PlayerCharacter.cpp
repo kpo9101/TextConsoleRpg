@@ -12,11 +12,33 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 {
 	while (true)
 	{
+		int num = 0;
 		std::cout << "무엇을 할까?" << std::endl;
 		std::cout << "[1]나의 정보 확인" << std::endl;
 		std::cout << "[2]아이템 확인" << std::endl;
 		std::cout << "[3]게임 로그 확인" << std::endl;
 		std::cout << "[4]전투" << std::endl;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(100, '\n');
+		}
+		if (num == 1)
+		{
+			ShowStatus();
+		}
+		if (num == 2)
+		{
+			// 아이템 함수 연결
+		}
+		if (num == 3)
+		{
+			// 게임 로그 확인 창 연결
+		}
+		if (num == 4)
+		{
+			//전투 연결
+		}
 	}
 }
 void PlayerCharacter::ShowStatus()
@@ -31,7 +53,8 @@ void PlayerCharacter::ShowStatus()
 }
 void PlayerCharacter::LevelUp()
 {
-
+	std::cout << "레벨업 함수";
+	Level += 1;
 }
 
 void PlayerCharacter::GetExp(int exp)
@@ -42,7 +65,7 @@ void PlayerCharacter::GetExp(int exp)
 	while (Experience >= 100)
 	{
 		Experience -= 100;
-		Levelup();
+		LevelUp();
 	}
 
 }
