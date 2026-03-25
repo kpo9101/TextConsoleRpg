@@ -7,6 +7,7 @@ class PlayerCharacter
 private:
 	std::string name;
 	int Level, Health, MaxHealth, Attack, Experience, Gold;
+	const int MaxExperience = 100;
 	std::vector<int> inventory;
 
 public:
