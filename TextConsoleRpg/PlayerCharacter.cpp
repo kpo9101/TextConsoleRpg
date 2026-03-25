@@ -3,12 +3,12 @@
 #include <iostream>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
-	  Level (1)
-	, Health (200)
-	, MaxHealth (200)
-	, Attack (30)
-	, Experience (0)
-	, Gold(0) 
+	Level(1)
+	, Health(200)
+	, MaxHealth(200)
+	, Attack(30)
+	, Experience(0)
+	, Gold(0)
 {
 	while (true)
 	{
@@ -53,10 +53,10 @@ void PlayerCharacter::ShowStatus()
 }
 void PlayerCharacter::LevelUp()
 {
-	std::cout << "축하합니다!! 레벨업!"; << std::endl;
+	std::cout << "축하합니다!! 레벨업!" << std::endl;
 	Level += 1;
-	Attack += 10;       
-	MaxHealth += 50;  
+	Attack += 10;
+	MaxHealth += 50;
 	Health = MaxHealth;
 }
 

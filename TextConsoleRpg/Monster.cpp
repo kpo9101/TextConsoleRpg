@@ -20,7 +20,7 @@ void Slime::takeDamage(int damage) {
 
 WildBoar::WildBoar(int level) {
     name = "¸äµÅÁö";
-    health =30 + (level * 5);
+    health = 30 + (level * 5);
     attack = 7 + level;
 }
 std::string WildBoar::getName() { return name; }
@@ -31,7 +31,7 @@ int WildBoar::getAttack()
     return attack;
 }
 
- void WildBoar::takeDamage(int damage) {
+void WildBoar::takeDamage(int damage) {
     health -= damage;
 }
 
