@@ -53,14 +53,19 @@ void PlayerCharacter::ShowStatus()
 }
 void PlayerCharacter::LevelUp()
 {
-	std::cout << "레벨업 함수";
+	std::cout << "축하합니다!! 레벨업!"; << std::endl;
 	Level += 1;
+	Attack += 10;       
+	MaxHealth += 50;  
+	Health = MaxHealth;
 }
 
-void PlayerCharacter::GetExp(int exp)
+void PlayerCharacter::GetExp(int exp) // 전투 종료후 불러올 함수
 {
-	std::cout << "경험치를 획득했습니다!" << std::endl;
-	Experience += exp;
+	int fixExp = 50;
+	std::cout << fixExp << " 경험치를 획득했습니다!" << std::endl;
+	Experience += fixExp;
+
 
 	while (Experience >= 100)
 	{
