@@ -3,7 +3,7 @@
 #include <iostream>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
-	Level(1)
+	  Level(1)
 	, Health(200)
 	, MaxHealth(200)
 	, Attack(30)
@@ -19,6 +19,7 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 		std::cout << "[2]아이템 확인" << std::endl;
 		std::cout << "[3]게임 로그 확인" << std::endl;
 		std::cout << "[4]전투" << std::endl;
+		std::cin >> num;
 		if (std::cin.fail())
 		{
 			std::cin.clear();
@@ -49,7 +50,7 @@ void PlayerCharacter::ShowStatus()
 	std::cout << "레벨 : " << Level << std::endl;
 	std::cout << "체력 : " << Health << "/" << MaxHealth << std::endl;
 	std::cout << "공격력 : " << Attack << std::endl;
-	std::cout << "경험치	: " << Experience << std::endl;
+	std::cout << "경험치	: " << Experience << "/" << MaxExp << std::endl;
 	std::cout << "골드 : " << Gold << std::endl;
 }
 void PlayerCharacter::LevelUp()
