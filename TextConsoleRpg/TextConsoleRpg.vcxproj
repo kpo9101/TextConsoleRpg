@@ -124,12 +124,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="TextConsoleRpg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="PlayerCharacter.h" />
   </ItemGroup>

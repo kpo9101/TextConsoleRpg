@@ -9,6 +9,7 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 	, Attack(30)
 	, Experience(0)
 	, Gold(0)
+	,TempAttackBoost(0)
 {
 	while (true)
 	{
@@ -74,4 +75,25 @@ void PlayerCharacter::GetExp(int exp) // 전투 종료후 불러올 함수
 	}
 
 }
+//Item관련
+void PlayerCharacter::Heal(int amount)
+{
+	Health += amount;
+	std::cout << "체력 +" << amount << std::endl;
+}
 
+void PlayerCharacter::ApplyAttackBoost(int value)
+{
+	TempAttackBoost += value;
+	std::cout << "공격력 +" << value << " (전투 중)\n";
+}
+
+int PlayerCharacter::GetTotalAttack() const
+{
+	return Attack + TempAttackBoost;
+}
+
+void PlayerCharacter::ResetBattleState()//전투 후 공격력 상승 초기화
+{
+	TempAttackBoost = 0;
+}

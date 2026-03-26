@@ -14,5 +14,12 @@ public:
 	void GetExp(int exp);
 	void ShowStatus();
 	void LevelUp();
+	//Item 관련 추가
+	void Heal(int amount);
+	void ApplyAttackBoost(int value);
+	int GetTotalAttack()const;
+	void ResetBattleState();
+	
+	int TempAttackBoost;//아이템 사용시 상승하는 공격력
 };
 
