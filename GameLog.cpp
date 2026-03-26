@@ -1,15 +1,31 @@
 #include "GameLog.h"
 #include <iostream>
 
-GameLog::GameLog(const std::string& filePath) {
-    file_.open(filePath, std::ios::app); // 파일 이어쓰기
+// 생성자: 로그 파일을 이어쓰기 모드로 연다.
+// (기존 로그를 유지하면서 뒤에 추가)
+GameLog::GameLog(const std::string& filePath)
+{
+    file.open(filePath, std::ios::app);
 }
 
-GameLog::~GameLog() {
-    if (file_.is_open()) file_.close();
+// 소멸자: 파일이 열려 있으면 닫는다.
+GameLog::~GameLog()
+{
+    if (file.is_open())
+    {
+        file.close();
+    }
 }
 
-void GameLog::write(const std::string& message) {
-    std::cout << message << "\n";          // 콘솔 출력
-    if (file_.is_open()) file_ << message << "\n"; // 파일 저장
+// 로그 기록 함수
+// 1) 콘솔에 출력
+// 2) 파일이 열려 있으면 파일에도 저장
+void GameLog::Write(const std::string& message)
+{
+    std::cout << message << std::endl;
+
+    if (file.is_open())
+    {
+        file << message << std::endl;
+    }
 }

@@ -1,15 +1,12 @@
-#include <windows.h>
 #include "GameLog.h"
 
-int main() {
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
+int main()
+{
+    GameLog log; // 기본 파일명: game.log
 
-    GameLog log;
-    log.write(u8"게임 시작");
-    log.write(u8"플레이어1이 슬라임3을 공격하여 25 피해");
-    log.write(u8"플레이어1이 레벨업");
-    log.write(u8"플레이어1이 아이템 획득: 나무검");
+    log.Write("[로그] 게임 시작");
+    log.Write("[로그] 플레이어 생성 완료");
+    log.Write("[로그] 튜토리얼 진입");
 
     return 0;
 }

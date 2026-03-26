@@ -2,13 +2,20 @@
 #include <string>
 #include <fstream>
 
-class GameLog {
+// 게임 로그를 콘솔 + 파일에 기록하는 클래스
+class GameLog
+{
 public:
+    // 기본 파일명은 game.log
     GameLog(const std::string& filePath = "game.log");
+
+    // 파일 리소스 정리
     ~GameLog();
 
-    void write(const std::string& message); // 로그 한 줄 기록
+    // 로그 한 줄 기록
+    void Write(const std::string& message);
 
 private:
-    std::ofstream file_;
+    // 로그 파일 스트림
+    std::ofstream file;
 };
