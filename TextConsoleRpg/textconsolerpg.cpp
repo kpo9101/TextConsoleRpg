@@ -20,7 +20,7 @@ int main(void)
 	if (std::cin.fail())
 	{
 		std::cin.clear();
-		std::cin.ignore(100, '\n');s
+		std::cin.ignore(100, '\n');
 	}
 	if (select == 1)
 	{
