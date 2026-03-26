@@ -4,12 +4,12 @@
 #include <string>
 
 //몬스터 클래스 
-class Monster 
+class Monster
 {
 protected:
     std::string name;
-    int health;
-    int attack;
+    int health = 0;
+    int attack = 0;
 
 public:
     virtual ~Monster() {}
@@ -41,7 +41,7 @@ public:
 class ShadowKnight : public Monster 
 {
 public:
-    ShadowKnight();
+    ShadowKnight(int level);
     std::string getName() override;
     int getHealth() override;
     int getAttack() override;
@@ -50,11 +50,13 @@ public:
 class DemonKing : public Monster 
 {
 public:
-    DemonKing();
+    DemonKing(int level);
     std::string getName() override;
     int getHealth() override;
     int getAttack() override;
     void takeDamage(int damage) override;
 };
+
+
 
 #endif

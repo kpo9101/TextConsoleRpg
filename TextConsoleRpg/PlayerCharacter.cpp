@@ -1,20 +1,12 @@
 // PlayerCharacter.cpp
 #include "PlayerCharacter.h"
 #include "Inventory.h"
+#include "GameManager.h"
+
 #include <iostream>
 #include <string>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
-<<<<<<< HEAD
-	  name(name),
-	  Level(1)
-	, Health(200)
-	, MaxHealth(200)
-	, Attack(30)
-	, Experience(0)
-	, Gold(0)
-	,TempAttackBoost(0)
-=======
 	  name(name)
 	, Level (1)
 	, Health (200)
@@ -23,7 +15,6 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 	, Experience (0)
 	, Gold(0) 
 	, TempAttackBoost (0)
->>>>>>> f7b5e2c98e56ac5d2616d17badfb6cf845fbdcba
 {
 	//기본 아이템 지급
 	inventory.AddItem(Item(ItemType::Potion));
@@ -80,7 +71,9 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 		}
 		if (num == 4)
 		{
-			//전투 연결
+			GameManager Game;
+			Game.battle(this);          
+		
 		}
 	}
 }
@@ -97,18 +90,23 @@ void PlayerCharacter::ShowStatus()
 void PlayerCharacter::LevelUp()
 {
 	std::cout << "축하합니다!! 레벨업!" << std::endl;
+	std::cout << "→ 현재 레벨 : " << Level + 1 << std::endl;
 	Level += 1;
 	Attack += 10;
 	MaxHealth += 50;
 	Health = MaxHealth;
+
+	if (Level >= 10) {
+		std::cout << "만렙 달성" << std::endl;
+		return;
+	}
+
 }
 
 void PlayerCharacter::GetExp(int exp) // 전투 종료후 불러올 함수
 {
-	int fixExp = 50;
-	std::cout << fixExp << " 경험치를 획득했습니다!" << std::endl;
-	Experience += fixExp;
-
+	std::cout << exp << " 경험치를 획득했습니다!" << std::endl;
+	Experience += exp;
 
 	while (Experience >= 100)
 	{
@@ -153,4 +151,30 @@ int PlayerCharacter::GetTotalAttack() const
 void PlayerCharacter::ResetBattleState()//전투 후 공격력 상승 초기화
 {
 	TempAttackBoost = 0;
+}
+
+// 여기 밑에는 추가한 내용
+
+int PlayerCharacter::GetLevel() const  // 레벨 불러오기
+{
+	return Level;
+}
+
+void PlayerCharacter::takeDamage(int damage)   // 플레이어가 데미지를 받는 것
+{
+	Health -= damage;
+	if (Health < 0) {
+		std::cout << "[몬스터 공격]" << name << "가" << damage << "데미지 입음! 남은 Hp: " << Health << std::endl;
+	}
+}
+
+int PlayerCharacter::GetHealth() const   // 현재 health 확인
+{
+	return Health;
+}
+
+void PlayerCharacter::AddItem(const Item& item)
+{
+	inventory.AddItem(item);
+	std::cout << " " << name << "아이템 획득!" << std::endl;
 }

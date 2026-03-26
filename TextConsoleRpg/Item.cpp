@@ -17,7 +17,6 @@ bool Item::Use(PlayerCharacter& player)
 		break;
 	}
 }
-
 void Item::Print()const
 {
 	switch (type)
