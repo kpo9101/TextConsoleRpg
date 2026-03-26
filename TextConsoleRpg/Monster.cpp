@@ -6,7 +6,7 @@
 Slime::Slime(int level) 
 {
     name = "슬라임";
-    health = 20 + (level * 5);
+    health = 200 + (level * 5);
     attack = 5 + level;
 }
 std::string Slime::getName() { return name; }
@@ -24,7 +24,7 @@ void Slime::takeDamage(int damage)
 WildBoar::WildBoar(int level) 
 {
     name = "멧돼지";
-    health = 30 + (level * 5);
+    health = 300 + (level * 5);
     attack = 7 + level;
 }
 std::string WildBoar::getName() { return name; }
@@ -40,7 +40,7 @@ void WildBoar::takeDamage(int damage)
 }
 
 // 그림자 기사 구현부
-ShadowKnight::ShadowKnight() 
+ShadowKnight::ShadowKnight(int level)
 {
     name = "그림자 기사";
     health = 200;
@@ -65,7 +65,7 @@ int ShadowKnight::getAttack()
 void ShadowKnight::takeDamage(int damage) { health -= damage; }
 
 // 마왕 구현부
-DemonKing::DemonKing() 
+DemonKing::DemonKing(int level)
 {
     name = "마왕";
     health = 500;

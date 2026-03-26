@@ -10,14 +10,9 @@ class PlayerCharacter
 private:
 	std::string name;
 	int Level, Health, MaxHealth, Attack, Experience, Gold;
-<<<<<<< HEAD
-	const int MaxExp = 100;
 	Inventory<Item> inventory;
-=======
 	const int MaxExperience = 100;
-	std::vector<int> inventory;
->>>>>>> f7b5e2c98e56ac5d2616d17badfb6cf845fbdcba
-
+	int TempAttackBoost;//아이템 사용시 상승하는 공격력
 public:
 	PlayerCharacter(std::string name);
 	void GetExp(int exp);
@@ -28,7 +23,11 @@ public:
 	void ApplyAttackBoost(int value);
 	int GetTotalAttack()const;
 	void ResetBattleState();
-	
-	int TempAttackBoost;//아이템 사용시 상승하는 공격력
+
+	int GetLevel() const;
+	void takeDamage(int damage);
+	int GetHealth() const;
+	void AddItem(const Item& item);
+
 };
 
