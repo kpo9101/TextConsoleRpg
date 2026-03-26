@@ -1,6 +1,7 @@
 // PlayerCharacter.cpp
 #include "PlayerCharacter.h"
 #include <iostream>
+#include <string>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
 	  name(name)
@@ -10,6 +11,7 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 	, Attack (30)
 	, Experience (0)
 	, Gold(0) 
+	, TempAttackBoost (0)
 {
 	while (true)
 	{
