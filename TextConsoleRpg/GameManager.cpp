@@ -78,16 +78,26 @@ void GameManager::battle(PlayerCharacter* player) {
             player->AddItem(Item(ItemType::AttackBoost));
         }
      
+<<<<<<< HEAD
         if (monster->getName() == "DemonKing") {
             std::cout << "\nGAME CLEAR!!!" << std::endl;
 
             system("pause");
+=======
+        if (monster->getName() == "¸¶¿Õ") {
+            std::cout << "\n GAME CLEAR!!!" << std::endl;
+
+>>>>>>> Mine
             exit(0);
         }
     }
     else {
         std::cout << "GAME OVER" << std::endl;
+<<<<<<< HEAD
         system("pause");
+=======
+  
+>>>>>>> Mine
         exit(0);
     }
 
