@@ -11,7 +11,7 @@ int main(void)
 	std::string Name;
 	std::cout << "평화롭던 '스파르타' 왕국에 갑자기 나타난 **'그림자 마왕'**이 왕국의 보물을 훔쳐 달아났습니다. 보물이 없으면 왕국의 결계가 깨져 몬스터들이 쳐들어오게 됩니다. 당신은 국왕의 부름을 받은 초보 용사입니다.";
 	std::cout << std::endl << "용사님, 당신의 이름을 입력하십시오." << std::endl;
-	std::cin >> Name;
+	std::getline(std::cin, Name);
 	std::cout << "당신의 이름은 \"" << Name << "\" 이군요" << std::endl;
 	std::cout << std::endl << "당신은 고민합니다." << std::endl;
 	std::cout << "[1]나는 이 상황을 변화시킬 힘이 없다 용사를 포기한다." << std::endl;

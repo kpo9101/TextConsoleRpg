@@ -1,8 +1,10 @@
 // PlayerCharacter.cpp
 #include "PlayerCharacter.h"
+#include "Inventory.h"
 #include <iostream>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
+	  name(name),
 	  Level(1)
 	, Health(200)
 	, MaxHealth(200)
@@ -11,6 +13,10 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 	, Gold(0)
 	,TempAttackBoost(0)
 {
+	//기본 아이템 지급
+	inventory.AddItem(Item(ItemType::Potion));
+	inventory.AddItem(Item(ItemType::AttackBoost));
+
 	while (true)
 	{
 		int num = 0;
@@ -31,7 +37,30 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 		}
 		if (num == 2)
 		{
-			// 아이템 함수 연결
+			inventory.ShowItems();
+
+			if (inventory.IsEmpty())
+			{
+				std::cout << "아이템이 없습니다.\n";
+				continue;
+			}
+			std::cout << "사용할 아이템 번호 선택 (0 취소) : ";
+			int choice;
+			std::cin >> choice;
+
+			if (choice == 0)
+			{
+				continue;
+			}
+
+			if (choice > inventory.GetSize())
+			{
+				std::cout << "잘못된 선택\n";
+				continue;
+			}
+
+			inventory.UseItem(choice - 1, *this);
+
 		}
 		if (num == 3)
 		{
@@ -77,10 +106,25 @@ void PlayerCharacter::GetExp(int exp) // 전투 종료후 불러올 함수
 
 }
 //Item관련
-void PlayerCharacter::Heal(int amount)
+bool PlayerCharacter::Heal(int amount)
 {
+	if (Health >= MaxHealth)
+	{
+		std::cout << "이미 체력이 가득 찼습니다 .\n";
+		return false;
+	}
+
+	int before = Health;
+
 	Health += amount;
-	std::cout << "체력 +" << amount << std::endl;
+
+	if(Health>MaxHealth)
+	
+		Health = MaxHealth;
+	
+	std::cout << "체력 +" << (Health-before) << std::endl;
+
+	return true;
 }
 
 void PlayerCharacter::ApplyAttackBoost(int value)

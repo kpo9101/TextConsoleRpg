@@ -2,13 +2,16 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Inventory.h"
+#include "Item.h"
+
 class PlayerCharacter
 {
 private:
 	std::string name;
 	int Level, Health, MaxHealth, Attack, Experience, Gold;
 	const int MaxExp = 100;
-	std::vector<int> inventory;
+	Inventory<Item> inventory;
 
 public:
 	PlayerCharacter(std::string name);
@@ -16,7 +19,7 @@ public:
 	void ShowStatus();
 	void LevelUp();
 	//Item 관련 추가
-	void Heal(int amount);
+	bool Heal(int amount);
 	void ApplyAttackBoost(int value);
 	int GetTotalAttack()const;
 	void ResetBattleState();

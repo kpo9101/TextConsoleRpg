@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 #include <iostream>
-#include "PlayerCharacter.h"
 
+class PlayerCharacter;
 template <typename T>
 class Inventory
 {
@@ -21,13 +21,13 @@ public:
 
         for (size_t i = 0; i < items.size(); ++i)
         {
-            std::cout << i << ": ";
+            std::cout << i+1 << ": ";
             items[i].Print();
             std::cout << std::endl;
         }
     }
 
-    void UseItem(size_t index, PlayerCharacter& player)
+    void UseItem(size_t index, PlayerCharacter &player)
     {
         if (index >= items.size())
         {
@@ -35,9 +35,11 @@ public:
             return;
         }
 
-        items[index].Use(player);
-
-        items.erase(items.begin() + index);
+        if (items[index].Use(player))
+        {
+            items.erase(items.begin() + index);
+        }
+        
     }
 
     bool IsEmpty() const

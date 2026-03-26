@@ -14,7 +14,7 @@ class Item
 public:
 	Item(ItemType t);
 
-	void Use(PlayerCharacter& player);
+	bool Use(PlayerCharacter& player);
 	void Print() const;
 
 private:
