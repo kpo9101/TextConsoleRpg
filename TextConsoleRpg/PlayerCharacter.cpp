@@ -1,5 +1,6 @@
 // PlayerCharacter.cpp
 #include "PlayerCharacter.h"
+#include "Monster.h"
 #include <iostream>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
@@ -40,6 +41,32 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 		if (num == 4)
 		{
 			//전투 연결
+			Monster* enemy = nullptr;
+			if (Level == 10)
+			{
+				enemy = new DemonKing;
+			}
+			else if (Level == 6)
+			{
+				enemy = new ShadowKnight;
+			}
+			else
+			{
+				if (rand() % 2 == 0)
+				{
+					enemy = new Slime(Level);
+				}
+				else enemy = new WildBoar(Level);
+			}
+
+			if (enemy != nullptr)
+			{
+				StartBattle(enemy);
+			}
+
+
+
+			delete enemy;
 		}
 	}
 }
@@ -97,4 +124,32 @@ int PlayerCharacter::GetTotalAttack() const
 void PlayerCharacter::ResetBattleState()//전투 후 공격력 상승 초기화
 {
 	TempAttackBoost = 0;
+}
+void PlayerCharacter::StartBattle(Monster* enemy) {
+
+	while (this->Health > 0 && enemy->getHealth() > 0) {
+		// 1. 플레이어 공격
+		int pDamage = this->GetTotalAttack();
+		std::cout << "\n" << "나의 공격! " << pDamage << "의 데미지를 입혔다!" << std::endl;
+		enemy->takeDamage(pDamage);
+
+		if (enemy->getHealth() <= 0) break; // 몬스터 사망 시 while 탈출.
+
+		// 2. 몬스터의 공격
+		int mDamage = enemy->getAttack();
+		this->Health -= mDamage;
+		std::cout << "> " << enemy->getName() << "의 공격! " << mDamage << "의 피해를 입었다." << std::endl;
+		std::cout << "남은 체력 : " << this->Health  << std::endl;
+	}
+
+	// 3. 결과 처리
+	if (this->Health <= 0) {
+		std::cout << "\n패배했습니다... 게임 오버." << std::endl;
+		exit(0); // 임시 종료
+	}
+	else {
+		std::cout << "\n승리했습니다!" << std::endl;
+		GetExp(50); // 경험치 획득
+		ResetBattleState(); // 버프나 상태초기화
+	}
 }

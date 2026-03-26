@@ -2,6 +2,7 @@
 #pragma once
 #include <string>
 #include <vector>
+class Monster;
 class PlayerCharacter
 {
 private:
@@ -20,6 +21,7 @@ public:
 	void ApplyAttackBoost(int value);
 	int GetTotalAttack()const;
 	void ResetBattleState();
+	void StartBattle(Monster* enemy); // 전투용 함수
 	
 	int TempAttackBoost;//아이템 사용시 상승하는 공격력
 };
