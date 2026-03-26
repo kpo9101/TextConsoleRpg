@@ -3,8 +3,8 @@
 #include <iostream>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
-	name(name)
-	,  Level (1)
+	  name(name)
+	, Level (1)
 	, Health (200)
 	, MaxHealth (200)
 	, Attack (30)
@@ -55,14 +55,19 @@ void PlayerCharacter::ShowStatus()
 }
 void PlayerCharacter::LevelUp()
 {
-	std::cout << "레벨업 함수";
+	std::cout << "축하합니다!! 레벨업!" << std::endl;
 	Level += 1;
+	Attack += 10;
+	MaxHealth += 50;
+	Health = MaxHealth;
 }
 
-void PlayerCharacter::GetExp(int exp)
+void PlayerCharacter::GetExp(int exp) // 전투 종료후 불러올 함수
 {
-	std::cout << "경험치를 획득했습니다!" << std::endl;
-	Experience += exp;
+	int fixExp = 50;
+	std::cout << fixExp << " 경험치를 획득했습니다!" << std::endl;
+	Experience += fixExp;
+
 
 	while (Experience >= 100)
 	{
@@ -71,4 +76,25 @@ void PlayerCharacter::GetExp(int exp)
 	}
 
 }
+//Item관련
+void PlayerCharacter::Heal(int amount)
+{
+	Health += amount;
+	std::cout << "체력 +" << amount << std::endl;
+}
 
+void PlayerCharacter::ApplyAttackBoost(int value)
+{
+	TempAttackBoost += value;
+	std::cout << "공격력 +" << value << " (전투 중)\n";
+}
+
+int PlayerCharacter::GetTotalAttack() const
+{
+	return Attack + TempAttackBoost;
+}
+
+void PlayerCharacter::ResetBattleState()//전투 후 공격력 상승 초기화
+{
+	TempAttackBoost = 0;
+}

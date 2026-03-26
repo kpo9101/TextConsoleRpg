@@ -4,7 +4,8 @@
 #include <string>
 
 //몬스터 클래스 
-class Monster {
+class Monster 
+{
 protected:
     std::string name;
     int health;
@@ -19,7 +20,8 @@ public:
 };
 
 // 하위 클래스
-class Slime : public Monster {
+class Slime : public Monster 
+{
 public:
     Slime(int level);
     std::string getName() override;
@@ -27,8 +29,8 @@ public:
     int getAttack() override;
     void takeDamage(int damage) override;
 };
-
-class WileBoar : public Monster {
+class WildBoar : public Monster 
+{
 public:
     WildBoar(int level);
     std::string getName() override;
@@ -36,8 +38,8 @@ public:
     int getAttack() override;
     void takeDamage(int damage) override;
 };
-
-class ShadowKnight : public Monster {
+class ShadowKnight : public Monster 
+{
 public:
     ShadowKnight();
     std::string getName() override;
@@ -45,8 +47,8 @@ public:
     int getAttack() override;
     void takeDamage(int damage) override;
 };
-
-class DemonKing : public Monster {
+class DemonKing : public Monster 
+{
 public:
     DemonKing();
     std::string getName() override;

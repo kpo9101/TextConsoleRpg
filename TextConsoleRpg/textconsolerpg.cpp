@@ -5,8 +5,6 @@
 #include "PlayerCharacter.h"
 
 
-
-
 int main(void)
 {
 	int select;
