@@ -2,8 +2,10 @@
 #include "PlayerCharacter.h"
 #include "Inventory.h"
 #include <iostream>
+#include <string>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
+<<<<<<< HEAD
 	  name(name),
 	  Level(1)
 	, Health(200)
@@ -12,6 +14,16 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 	, Experience(0)
 	, Gold(0)
 	,TempAttackBoost(0)
+=======
+	  name(name)
+	, Level (1)
+	, Health (200)
+	, MaxHealth (200)
+	, Attack (30)
+	, Experience (0)
+	, Gold(0) 
+	, TempAttackBoost (0)
+>>>>>>> f7b5e2c98e56ac5d2616d17badfb6cf845fbdcba
 {
 	//기본 아이템 지급
 	inventory.AddItem(Item(ItemType::Potion));
@@ -79,8 +91,8 @@ void PlayerCharacter::ShowStatus()
 	std::cout << "레벨 : " << Level << std::endl;
 	std::cout << "체력 : " << Health << "/" << MaxHealth << std::endl;
 	std::cout << "공격력 : " << Attack << std::endl;
-	std::cout << "경험치	: " << Experience << "/" << MaxExp << std::endl;
-	std::cout << "골드 : " << Gold << std::endl;
+	std::cout << "경험치 : " << Experience << "/" << MaxExperience << std::endl;
+	std::cout << "골드 : " << Gold << std::endl << std::endl;
 }
 void PlayerCharacter::LevelUp()
 {

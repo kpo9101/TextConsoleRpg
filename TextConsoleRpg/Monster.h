@@ -29,7 +29,6 @@ public:
     int getAttack() override;
     void takeDamage(int damage) override;
 };
-
 class WildBoar : public Monster 
 {
 public:
@@ -39,7 +38,6 @@ public:
     int getAttack() override;
     void takeDamage(int damage) override;
 };
-
 class ShadowKnight : public Monster 
 {
 public:
@@ -49,7 +47,6 @@ public:
     int getAttack() override;
     void takeDamage(int damage) override;
 };
-
 class DemonKing : public Monster 
 {
 public:
