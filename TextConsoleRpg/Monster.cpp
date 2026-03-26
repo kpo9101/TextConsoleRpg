@@ -24,7 +24,7 @@ WildBoar::WildBoar(int level) {
     attack = 7 + level;
 }
 std::string WildBoar::getName() { return name; }
-int WildBoar::getgHealth() { return health; }
+int WildBoar::getHealth() { return health; }
 int WildBoar::getAttack()
 {
     std::cout << name << "의 돌진! (" << attack << " 데미지)" << std::endl;

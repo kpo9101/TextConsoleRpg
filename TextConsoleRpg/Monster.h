@@ -28,7 +28,7 @@ public:
     void takeDamage(int damage) override;
 };
 
-class WileBoar : public Monster {
+class WildBoar : public Monster {
 public:
     WildBoar(int level);
     std::string getName() override;
