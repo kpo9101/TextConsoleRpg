@@ -18,5 +18,10 @@ public:
 	void battle(PlayerCharacter* Player);
 	void displayInventory(PlayerCharacter* Player);
 
+protected:
+	bool bClearShadowKnight = false;
+	bool bClearDemonKing = false;
+
+
 };
 
