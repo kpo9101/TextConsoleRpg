@@ -16,6 +16,7 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 	, Gold(0) 
 	, TempAttackBoost (0)
 {
+	Game = new GameManager;
 	//기본 아이템 지급
 	inventory.AddItem(Item(ItemType::Potion));
 	inventory.AddItem(Item(ItemType::AttackBoost));
@@ -71,8 +72,7 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 		}
 		if (num == 4)
 		{
-			GameManager Game;
-			Game.battle(this);          
+			Game->battle(this);          
 		
 		}
 	}

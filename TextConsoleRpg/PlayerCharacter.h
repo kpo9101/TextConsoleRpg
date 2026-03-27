@@ -5,6 +5,7 @@
 #include "Inventory.h"
 #include "Item.h"
 
+class GameManager;
 class PlayerCharacter
 {
 private:
@@ -13,6 +14,7 @@ private:
 	Inventory<Item> inventory;
 	const int MaxExperience = 100;
 	int TempAttackBoost;//아이템 사용시 상승하는 공격력
+	GameManager* Game;
 public:
 	PlayerCharacter(std::string name);
 	void GetExp(int exp);

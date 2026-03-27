@@ -10,16 +10,19 @@ GameManager::~GameManager() {
 
 }
 
-Monster* GameManager::generateMonster(int level) {
+Monster* GameManager::generateMonster(int level) 
+{
     std::cout << "\n";
 
-    if (level == 10) {
+    if (level == 10) 
+    {
         std::cout << "최종 보스 'DemonKing' 출현!!!" << std::endl;
+        bClearDemonKing = true;
         return new DemonKing(level);
     }
-    else if (level == 6) {
+    else if (level == 6 && !bClearShadowKnight) {
         std::cout << "중간보스 'ShadowKnight' 출현!" << std::endl;
- 
+        bClearShadowKnight = true;
         return new ShadowKnight(level);
     }
     else if (level >= 1 && level <= 3) {
@@ -28,11 +31,14 @@ Monster* GameManager::generateMonster(int level) {
     else if (level >= 4 && level <= 5) {
         return new WildBoar(level);       
     }
-    else if (level >= 7 && level <= 9) {
-        if (std::rand() % 2 == 0) {
+    else
+    {
+        if (std::rand() % 2 == 0) 
+        {
             return new Slime(level);
         }
-        else {
+        else 
+        {
             return new WildBoar(level);
         }
     }
@@ -77,27 +83,14 @@ void GameManager::battle(PlayerCharacter* player) {
         else {
             player->AddItem(Item(ItemType::AttackBoost));
         }
-     
-<<<<<<< HEAD
-        if (monster->getName() == "DemonKing") {
-            std::cout << "\nGAME CLEAR!!!" << std::endl;
 
-            system("pause");
-=======
         if (monster->getName() == "마왕") {
             std::cout << "\n GAME CLEAR!!!" << std::endl;
-
->>>>>>> Mine
             exit(0);
         }
     }
     else {
         std::cout << "GAME OVER" << std::endl;
-<<<<<<< HEAD
-        system("pause");
-=======
-  
->>>>>>> Mine
         exit(0);
     }
 
