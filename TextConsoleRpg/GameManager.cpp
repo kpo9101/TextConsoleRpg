@@ -112,7 +112,7 @@ void GameManager::battle(PlayerCharacter* player) {
     if (monster->getHealth() <= 0) {
         std::cout << " ÀüÅõ ½Â¸®! " << monster->getName() << "À» ¹°¸®ÃÆ½À´Ï´Ù!\n" << std::endl;
         player->GetExp(50);
-
+        player->Getgold(std::rand() % 51);
 
         if (std::rand() % 2 == 0) {
             player->AddItem(Item(ItemType::Potion));
@@ -120,25 +120,13 @@ void GameManager::battle(PlayerCharacter* player) {
         else {
             player->AddItem(Item(ItemType::AttackBoost));
         }
-<<<<<<< HEAD
-     
         if (monster->getName() == "¸¶¿Õ") {
             std::cout << "\n GAME CLEAR!!!" << std::endl;
-
-=======
-
-        if (monster->getName() == "¸¶¿Õ") {
-            std::cout << "\n GAME CLEAR!!!" << std::endl;
->>>>>>> Release
             exit(0);
         }
     }
     else {
         std::cout << "GAME OVER" << std::endl;
-<<<<<<< HEAD
-  
-=======
->>>>>>> Release
         exit(0);
     }
 
