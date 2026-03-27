@@ -58,8 +58,8 @@ void GameManager::battle(PlayerCharacter* player) {
     std::cout << monster->getName() << " [레벨 " << currentLevel << "] 등장!" << std::endl;
 
 
-    while (monster->getHealth() > 0 && player->GetHealth() > 0) { 
-        
+    while (monster->getHealth() > 0 && player->GetHealth() > 0) {
+
         std::cout << " 당신의 선택은?" << std::endl;
         std::cout << " 1. 공격" << std::endl;
         std::cout << " 2. 아이템 사용" << std::endl;
@@ -68,7 +68,7 @@ void GameManager::battle(PlayerCharacter* player) {
         int choice;
         std::cin >> choice;
 
-        if (std::cin.fail()) 
+        if (std::cin.fail())
         {
             std::cin.clear();
             std::cin.ignore(100, '\n');
@@ -83,8 +83,8 @@ void GameManager::battle(PlayerCharacter* player) {
         }
         else if (choice == 2)
         {
-            player->BattleItem();   
-            return;
+            player->BattleItem();
+            continue;
         }
         else if (choice == 3)
         {
@@ -94,14 +94,14 @@ void GameManager::battle(PlayerCharacter* player) {
         else {
             std::cout << "1,2,3 중 택 1 해주세요" << std::endl;
         }
-       
+
 
         if (monster->getHealth() <= 0) break; // 몬스터 hp 0 확인
 
         //몬스터 턴
         std::cout << "\n--- " << monster->getName() << "공격" << std::endl;
-        int monsterDamage = monster->getAttack();   
-        player->takeDamage(monsterDamage);        
+        int monsterDamage = monster->getAttack();
+        player->takeDamage(monsterDamage);
         std::cout << "플레이어 HP: " << player->GetHealth() << std::endl << std::endl;
 
         // 전투 시작으로 가면서 계속 확인
@@ -120,29 +120,27 @@ void GameManager::battle(PlayerCharacter* player) {
         else {
             player->AddItem(Item(ItemType::AttackBoost));
         }
-<<<<<<< HEAD
-     
-        if (monster->getName() == "마왕") {
-            std::cout << "\n GAME CLEAR!!!" << std::endl;
 
-=======
 
         if (monster->getName() == "마왕") {
             std::cout << "\n GAME CLEAR!!!" << std::endl;
->>>>>>> Release
+
+
+
+            if (monster->getName() == "마왕") {
+                std::cout << "\n GAME CLEAR!!!" << std::endl;
+
+                exit(0);
+            }
+        }
+        else {
+            std::cout << "GAME OVER" << std::endl;
+
             exit(0);
         }
-    }
-    else {
-        std::cout << "GAME OVER" << std::endl;
-<<<<<<< HEAD
-  
-=======
->>>>>>> Release
-        exit(0);
-    }
 
-    player->ResetBattleState();
-    delete monster;
+        player->ResetBattleState();
+        delete monster;
+    }
 }
 
