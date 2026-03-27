@@ -26,10 +26,13 @@ public:
 	int GetTotalAttack()const;
 	void ResetBattleState();
 
+	//추가 내용
 	int GetLevel() const;
 	void takeDamage(int damage);
 	int GetHealth() const;
 	void AddItem(const Item& item);
+	void BattleItem();
+	std::string GetName() const;
 
 };
 
