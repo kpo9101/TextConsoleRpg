@@ -66,6 +66,7 @@ void GameManager::battle(PlayerCharacter* player) {
         std::cout << "\n--- " << monster->getName() << "공격" << std::endl;
         int monsterDamage = monster->getAttack();   
         player->takeDamage(monsterDamage);        
+        std::cout << "플레이어 HP: " << player->GetHealth() << std::endl << std::endl;
 
         // 전투 시작으로 가면서 계속 확인
         std::cout << "몬스터 HP: " << monster->getHealth() << std::endl << std::endl;
