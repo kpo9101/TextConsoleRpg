@@ -58,8 +58,13 @@ void GameManager::battle(PlayerCharacter* player) {
     std::cout << monster->getName() << " [레벨 " << currentLevel << "] 등장!" << std::endl;
 
 
+<<<<<<< HEAD
     while (monster->getHealth() > 0 && player->GetHealth() > 0) {
 
+=======
+    while (player->GetHealth() > 0) { 
+        
+>>>>>>> 9795f73fbe48ed3b195f9da8ca1cd09f7f55fb27
         std::cout << " 당신의 선택은?" << std::endl;
         std::cout << " 1. 공격" << std::endl;
         std::cout << " 2. 아이템 사용" << std::endl;
@@ -112,7 +117,7 @@ void GameManager::battle(PlayerCharacter* player) {
     if (monster->getHealth() <= 0) {
         std::cout << " 전투 승리! " << monster->getName() << "을 물리쳤습니다!\n" << std::endl;
         player->GetExp(50);
-
+        player->Getgold(std::rand() % 51);
 
         if (std::rand() % 2 == 0) {
             player->AddItem(Item(ItemType::Potion));
@@ -120,6 +125,7 @@ void GameManager::battle(PlayerCharacter* player) {
         else {
             player->AddItem(Item(ItemType::AttackBoost));
         }
+<<<<<<< HEAD
 
 
         if (monster->getName() == "마왕") {
@@ -138,6 +144,17 @@ void GameManager::battle(PlayerCharacter* player) {
 
             exit(0);
         }
+=======
+        if (monster->getName() == "마왕") {
+             std::cout << "\n GAME CLEAR!!!" << std::endl;
+            exit(0);
+        }
+    }
+    else {
+        std::cout << "GAME OVER" << std::endl;
+        exit(0);
+    }
+>>>>>>> 9795f73fbe48ed3b195f9da8ca1cd09f7f55fb27
 
         player->ResetBattleState();
         delete monster;

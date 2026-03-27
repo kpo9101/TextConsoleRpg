@@ -122,6 +122,11 @@ void PlayerCharacter::GetExp(int exp) // 전투 종료후 불러올 함수
 	}
 
 }
+void PlayerCharacter::Getgold(int gold)
+{
+	std::cout << gold << " 골드를 획득했습니다!" << std::endl;
+	Gold += gold;
+}
 //Item관련
 bool PlayerCharacter::Heal(int amount)
 {
