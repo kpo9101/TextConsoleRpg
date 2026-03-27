@@ -58,13 +58,9 @@ void GameManager::battle(PlayerCharacter* player) {
     std::cout << monster->getName() << " [레벨 " << currentLevel << "] 등장!" << std::endl;
 
 
-<<<<<<< HEAD
-    while (monster->getHealth() > 0 && player->GetHealth() > 0) {
 
-=======
     while (player->GetHealth() > 0) { 
         
->>>>>>> 9795f73fbe48ed3b195f9da8ca1cd09f7f55fb27
         std::cout << " 당신의 선택은?" << std::endl;
         std::cout << " 1. 공격" << std::endl;
         std::cout << " 2. 아이템 사용" << std::endl;
@@ -125,18 +121,11 @@ void GameManager::battle(PlayerCharacter* player) {
         else {
             player->AddItem(Item(ItemType::AttackBoost));
         }
-<<<<<<< HEAD
-
 
         if (monster->getName() == "마왕") {
             std::cout << "\n GAME CLEAR!!!" << std::endl;
 
-
-
-            if (monster->getName() == "마왕") {
-                std::cout << "\n GAME CLEAR!!!" << std::endl;
-
-                exit(0);
+             exit(0);
             }
         }
         else {
@@ -144,21 +133,18 @@ void GameManager::battle(PlayerCharacter* player) {
 
             exit(0);
         }
-=======
-        if (monster->getName() == "마왕") {
-             std::cout << "\n GAME CLEAR!!!" << std::endl;
-            exit(0);
-        }
-    }
-    else {
-        std::cout << "GAME OVER" << std::endl;
-        exit(0);
-    }
->>>>>>> 9795f73fbe48ed3b195f9da8ca1cd09f7f55fb27
 
         player->ResetBattleState();
         delete monster;
     }
+
+void GameManager::displayInventory(PlayerCharacter* Player)
+{
+    Player->ShowStatus();
+    std::cout << "[인벤토리]" << std::endl;
+}
+
+/*
     int choice;
     std::cout << "상점에 들어가시겠습니까? (1:예 , 2:아니요)";
     std::cin >> choice;
@@ -167,4 +153,4 @@ void GameManager::battle(PlayerCharacter* player) {
         player->OpenShop();
     }
 }
-
+*/

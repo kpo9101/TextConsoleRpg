@@ -22,6 +22,5 @@ protected:
 	bool bClearShadowKnight = false;
 	bool bClearDemonKing = false;
 
-
 };
 
