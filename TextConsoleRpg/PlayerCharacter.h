@@ -10,6 +10,8 @@ private:
 	int Level, Health, MaxHealth, Attack, Experience, Gold;
 	const int MaxExp = 100;
 	std::vector<int> inventory;
+	bool bClearShadowKnight = false;
+	bool bClearDemonKing = false;
 
 public:
 	PlayerCharacter(std::string name);

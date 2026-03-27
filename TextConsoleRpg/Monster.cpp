@@ -3,10 +3,10 @@
 #include <cstdlib>
 
 // Slime 구현
-Slime::Slime(int level) {
+Slime::Slime(int Level) {
     name = "슬라임";
-    health = 20 + (level * 5);
-    attack = 5 + level;
+    health = 60 + (Level * 5);
+    attack = 5 + Level;
 }
 std::string Slime::getName() { return name; }
 int Slime::getHealth() { return health; }
@@ -18,10 +18,10 @@ void Slime::takeDamage(int damage) {
     health -= damage;
 }
 
-WildBoar::WildBoar(int level) {
+WildBoar::WildBoar(int Level) {
     name = "멧돼지";
-    health = 30 + (level * 5);
-    attack = 7 + level;
+    health = 70 + (Level * 5);
+    attack = 10 + Level;
 }
 std::string WildBoar::getName() { return name; }
 int WildBoar::getHealth() { return health; }
@@ -38,8 +38,8 @@ void WildBoar::takeDamage(int damage) {
 // 그림자 기사 구현부
 ShadowKnight::ShadowKnight() {
     name = "그림자 기사";
-    health = 200;
-    attack = 25;
+    health = 450;
+    attack = 40;
 }
 std::string ShadowKnight::getName() { return name; }
 int ShadowKnight::getHealth() { return health; }
@@ -59,7 +59,7 @@ void ShadowKnight::takeDamage(int damage) { health -= damage; }
 // 마왕 구현부
 DemonKing::DemonKing() {
     name = "마왕";
-    health = 500;
+    health = 1000;
     attack = 50;
 }
 std::string DemonKing::getName() { return name; }

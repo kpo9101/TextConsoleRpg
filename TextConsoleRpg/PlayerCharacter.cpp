@@ -42,13 +42,15 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 		{
 			//전투 연결
 			Monster* enemy = nullptr;
-			if (Level == 10)
+			if (Level == 10 && !bClearDemonKing)
 			{
 				enemy = new DemonKing;
+				bClearDemonKing = true;
 			}
-			else if (Level == 6)
+			else if (Level == 6 && !bClearShadowKnight)
 			{
 				enemy = new ShadowKnight;
+				bClearShadowKnight = true;
 			}
 			else
 			{
@@ -57,6 +59,7 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 					enemy = new Slime(Level);
 				}
 				else enemy = new WildBoar(Level);
+
 			}
 
 			if (enemy != nullptr)
