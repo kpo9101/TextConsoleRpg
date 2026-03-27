@@ -33,6 +33,7 @@ public:
 	void AddItem(const Item& item);
 	void BattleItem();
 	std::string GetName() const;
+	void OpenShop();
 
 };
 

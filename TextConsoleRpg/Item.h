@@ -16,7 +16,7 @@ public:
 
 	bool Use(PlayerCharacter& player);
 	void Print() const;
-
+	int GetPrice()const;
 private:
 	ItemType type;
 };

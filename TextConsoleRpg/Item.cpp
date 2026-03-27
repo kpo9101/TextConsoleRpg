@@ -34,3 +34,12 @@ void Item::Print()const
 	}
 
 }
+int Item::GetPrice()const
+{
+	switch (type)
+	{
+	case ItemType::Potion: return 50;
+	case ItemType::AttackBoost: return 100;
+	}
+	return 0;
+}

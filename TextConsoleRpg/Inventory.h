@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include "Item.h"
 
 class PlayerCharacter;
 template <typename T>
@@ -10,6 +11,7 @@ private:
     std::vector<T> items;
 
 public:
+   
     void AddItem(const T& item)
     {
         items.push_back(item);
@@ -21,13 +23,13 @@ public:
 
         for (size_t i = 0; i < items.size(); ++i)
         {
-            std::cout << i+1 << ": ";
+            std::cout << i + 1 << ": ";
             items[i].Print();
             std::cout << std::endl;
         }
     }
 
-    void UseItem(size_t index, PlayerCharacter &player)
+    void UseItem(size_t index, PlayerCharacter& player)
     {
         if (index >= items.size())
         {
@@ -39,7 +41,17 @@ public:
         {
             items.erase(items.begin() + index);
         }
-        
+
+    }
+
+    Item GetItem(int index) const
+    {
+        return items[index];
+    }
+
+    void RemoveItem(int index)
+    {
+        items.erase(items.begin() + index);
     }
 
     bool IsEmpty() const
@@ -51,4 +63,5 @@ public:
     {
         return items.size();
     }
+
 };

@@ -13,7 +13,7 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 	, MaxHealth (200)
 	, Attack (30)
 	, Experience (0)
-	, Gold(0) 
+	, Gold(100) 
 	, TempAttackBoost (0)
 {
 	Game = new GameManager;
@@ -29,6 +29,7 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 		std::cout << "[2]아이템 확인" << std::endl;
 		std::cout << "[3]게임 로그 확인" << std::endl;
 		std::cout << "[4]전투" << std::endl;
+		std::cout << "[5]상점" << std::endl;
 		std::cin >> num;
 		if (std::cin.fail())
 		{
@@ -75,6 +76,12 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 			Game->battle(this);          
 		
 		}
+		if (num == 5)
+		{
+			OpenShop();
+		}
+
+			
 	}
 }
 void PlayerCharacter::ShowStatus()
@@ -151,6 +158,103 @@ int PlayerCharacter::GetTotalAttack() const
 void PlayerCharacter::ResetBattleState()//전투 후 공격력 상승 초기화
 {
 	TempAttackBoost = 0;
+}
+void PlayerCharacter::OpenShop()
+{
+	while (true)
+	{
+		std::cout << "\n=== 상점 ===\n";
+		std::cout << "보유 골드: " << Gold << "\n";
+		std::cout << "[1] 아이템 구매\n";
+		std::cout << "[2] 아이템 판매\n";
+		std::cout << "[0] 나가기\n";
+
+		int choice;
+		std::cin >> choice;
+
+		if (choice == 0)
+			return;
+
+		//구매
+		if (choice == 1)
+		{
+			std::cout << "\n[구매]\n";
+			std::cout << "1. 포션 (50골드)\n";
+			std::cout << "2. 공격력 부스터 (100골드)\n";
+
+			int buy;
+			std::cin >> buy;
+
+			Item item = Item(ItemType::Potion);
+			int price = 0;
+
+			if (buy == 1)
+			{
+				item = Item(ItemType::Potion);
+				price = item.GetPrice();
+			}
+			else if (buy == 2)
+			{
+				item = Item(ItemType::AttackBoost);
+				price = item.GetPrice();
+			}
+			else
+			{
+				std::cout << "잘못된 선택\n";
+				continue;
+			}
+
+			if (Gold < price)
+			{
+				std::cout << "골드 부족!\n";
+				continue;
+			}
+
+			Gold -= price;
+			inventory.AddItem(item);
+			std::cout << "구매 완료!\n";
+		}
+
+		//판매
+		else if (choice == 2)
+		{
+			std::cout << "\n[판매]\n";
+			inventory.ShowItems();
+
+			if (inventory.IsEmpty())
+			{
+				std::cout << "판매할 아이템 없음\n";
+				continue;
+			}
+
+			std::cout << "판매할 아이템 번호 선택 (0 취소): ";
+			int sell;
+			std::cin >> sell;
+
+			if (sell == 0)
+				continue;
+
+			if (sell > inventory.GetSize())
+			{
+				std::cout << "잘못된 선택\n";
+				continue;
+			}
+
+			Item item = inventory.GetItem(sell - 1);
+
+			int sellPrice = item.GetPrice() * 0.6; 
+
+			Gold += sellPrice;
+			inventory.RemoveItem(sell - 1);
+
+			std::cout << sellPrice << " 골드 획득!\n";
+		}
+
+		else
+		{
+			std::cout << "잘못된 선택\n";
+		}
+	}
 }
 
 // 여기 밑에는 추가한 내용
