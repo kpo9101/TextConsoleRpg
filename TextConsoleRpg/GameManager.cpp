@@ -58,7 +58,7 @@ void GameManager::battle(PlayerCharacter* player) {
     std::cout << monster->getName() << " [레벨 " << currentLevel << "] 등장!" << std::endl;
 
 
-    while (monster->getHealth() > 0 && player->GetHealth() > 0) { 
+    while (player->GetHealth() > 0) { 
         
         std::cout << " 당신의 선택은?" << std::endl;
         std::cout << " 1. 공격" << std::endl;
@@ -121,7 +121,7 @@ void GameManager::battle(PlayerCharacter* player) {
             player->AddItem(Item(ItemType::AttackBoost));
         }
         if (monster->getName() == "마왕") {
-            std::cout << "\n GAME CLEAR!!!" << std::endl;
+             std::cout << "\n GAME CLEAR!!!" << std::endl;
             exit(0);
         }
     }
