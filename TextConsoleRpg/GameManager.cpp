@@ -134,3 +134,8 @@ void GameManager::battle(PlayerCharacter* player) {
     delete monster;
 }
 
+void GameManager::displayInventory(PlayerCharacter* Player)
+{
+    Player->ShowStatus();          
+    std::cout << "[인벤토리]" << std::endl;
+}
