@@ -33,11 +33,11 @@ public:
 	void AddItem(const Item& item);
 	void BattleItem();
 	std::string GetName() const;
-<<<<<<< HEAD
+
 	void OpenShop();
-=======
+
 	void Getgold(int Gold);
->>>>>>> 9795f73fbe48ed3b195f9da8ca1cd09f7f55fb27
+
 
 };
 
