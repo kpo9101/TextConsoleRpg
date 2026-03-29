@@ -3,10 +3,12 @@
 #include <iostream>
 #include <string>
 #include "PlayerCharacter.h"
-
+#include <ctime>
+#include <cstdlib>
 
 int main(void)
 {
+	std::srand(static_cast<unsigned int>(time(NULL))); // 현재 시간 기준으로 시드 초기화 (몬스터 순서가 동일하게 나와서 추가하였습니다.)
 	int select;
 	std::string Name;
 	std::cout << "평화롭던 '스파르타' 왕국에 갑자기 나타난 **'마왕'**이 왕국의 보물을 훔쳐 달아났습니다. \n 보물이 없으면 왕국의 결계가 깨져 몬스터들이 쳐들어오게 됩니다. \n 당신은 국왕의 부름을 받은 초보 용사입니다.";

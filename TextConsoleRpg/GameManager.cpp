@@ -3,6 +3,7 @@
 #include "GameManager.h"
 #include "PlayerCharacter.h"
 #include "Inventory.h"
+#include "MonsterAA.h"
 
 
 GameManager::GameManager() {
@@ -21,32 +22,27 @@ Monster* GameManager::generateMonster(int level)
     {
         std::cout << "최종 보스 'DemonKing' 출현!!!" << std::endl;
         bClearDemonKing = true;
+        std::cout << MonsterAA::DemonKing << std::endl;
         return new DemonKing(level);
     }
     else if (level == 6 && !bClearShadowKnight) {
         std::cout << "중간보스 'ShadowKnight' 출현!" << std::endl;
         bClearShadowKnight = true;
+        std::cout << MonsterAA::ShadowKnight << std::endl;
         return new ShadowKnight(level);
     }
-    else if (level >= 1 && level <= 3) {
-        return new Slime(level);           
-    }
-    else if (level >= 4 && level <= 5) {
-        return new WildBoar(level);       
+    else if (rand() % 2 == 0)
+    {
+        std::cout << MonsterAA::Slime << std::endl;
+        return new Slime(level);
     }
     else
     {
-        if (std::rand() % 2 == 0) 
-        {
-            return new Slime(level);
-        }
-        else 
-        {
-            return new WildBoar(level);
-        }
+        std::cout << MonsterAA::WildBoar << std::endl;
+        return new WildBoar(level);
     }
-
 }
+
 
 void GameManager::battle(PlayerCharacter* player) {
     std::cout << "\n 전투 시작! \n" << std::endl;
