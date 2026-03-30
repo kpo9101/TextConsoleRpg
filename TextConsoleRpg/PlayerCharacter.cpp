@@ -272,7 +272,8 @@ int PlayerCharacter::GetLevel() const  // 레벨 불러오기
 void PlayerCharacter::takeDamage(int damage)   // 플레이어가 데미지를 받는 것
 {
 	Health -= damage;
-	if (Health < 0) {
+	if (Health <= 0) {
+		Health = 0;
 		std::cout << "[몬스터 공격]" << name << "가" << damage << "데미지 입음! 남은 Hp: " << Health << std::endl;
 	}
 }
