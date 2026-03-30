@@ -89,15 +89,12 @@ void GameManager::battle(PlayerCharacter* player) {
                     std::cout << "1,2,3 중 택 1 해주세요" << std::endl;
                 }
 
-                if (monster->getHealth() <= 0)// 몬스터 hp 0 확인
+                if (monster->getHealth() <= 0) break;// 몬스터 hp 0 확인
                 {
-                //몬스터 턴
                 std::cout << "\n--- " << monster->getName() << "공격" << std::endl;
                 int monsterDamage = monster->getAttack();
                 player->takeDamage(monsterDamage);
                 std::cout << "플레이어 HP: " << player->GetHealth() << std::endl << std::endl;
-
-
                 std::cout << "몬스터 HP: " << monster->getHealth() << std::endl << std::endl;
             }
 
@@ -106,22 +103,23 @@ void GameManager::battle(PlayerCharacter* player) {
                     std::cout << " 전투 승리! " << monster->getName() << "을 물리쳤습니다!\n" << std::endl;
                     player->GetExp(50);
                     player->Getgold(std::rand() % 51);
-                }
-                if (std::rand() % 2 == 0) {
-                    player->AddItem(Item(ItemType::Potion));
-                }
-                else {
-                    player->AddItem(Item(ItemType::AttackBoost));
-                }
 
-                if (monster->getName() == "마왕") {
-                    std::cout << "\n GAME CLEAR!!!" << std::endl;
-                   
+                    if (std::rand() % 2 == 0) {
+                        player->AddItem(Item(ItemType::Potion));
+                    }
+                    else {
+                        player->AddItem(Item(ItemType::AttackBoost));
+                    }
+
+                    if (monster->getName() == "마왕") {
+                        std::cout << "\n GAME CLEAR!!!" << std::endl;
+                        exit(0);
+                    }
                 }
             
-            else if(player->GetHealth() <=0){
+            else if(player->GetHealth() <=0 && monster->getHealth() > 0){
                 std::cout << "GAME OVER" << std::endl;
-              
+                exit(0);
                 }
             }
             // 소멸
