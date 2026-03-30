@@ -6,8 +6,8 @@
 Slime::Slime(int level) 
 {
     name = "슬라임";
-    health = 10000;        // 원래 수치170 + (level * 30);
-    attack = 10000;           // 원래 수치level * 10;
+    health = 1;        // 원래 수치170 + (level * 30);
+    attack = 1;           // 원래 수치level * 10;
 }
 std::string Slime::getName() { return name; }
 int Slime::getHealth() { return health; }
@@ -24,8 +24,8 @@ void Slime::takeDamage(int damage)
 WildBoar::WildBoar(int level) 
 {
     name = "멧돼지";
-    health = 1000;  //원래 수치 150 + (level * 50);
-    attack = 5000;        // 원래 수치5 + (level * 12);
+    health = 1;  //원래 수치 150 + (level * 50);
+    attack = 5;        // 원래 수치5 + (level * 12);
 }
 std::string WildBoar::getName() { return name; }
 int WildBoar::getHealth() { return health; }
