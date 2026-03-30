@@ -129,6 +129,28 @@ void GameManager::battle(PlayerCharacter* player) {
             // 소멸
             player->ResetBattleState();
             delete monster;
+
+            int choice;
+            while (true)
+            {
+                std::cout << "\n상점을 이용하시겠습니까? (네 : 1/아니요 : 2): ";
+                std::cin >> choice;
+
+                if (choice == 1 )
+                {
+                    player->OpenShop();
+                    break;
+                }
+                else if (choice == 2)
+                {
+                    std::cout << "상점을 이용하지 않습니다.\n";
+                    break;
+                }
+                else
+                {
+                    std::cout << "1 또는 2만 입력하세요.\n";
+                }
+            }
 }
 
 
