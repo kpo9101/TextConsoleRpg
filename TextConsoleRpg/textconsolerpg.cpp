@@ -3,10 +3,12 @@
 #include <iostream>
 #include <string>
 #include "PlayerCharacter.h"
-
+#include <ctime>
+#include <cstdlib>
 
 int main(void)
 {
+	std::srand(static_cast<unsigned int>(time(NULL))); // 현재 시간 기준으로 시드 초기화 (몬스터 순서가 동일하게 나와서 추가하였습니다.)
 	int select;
 	std::string Name;
 

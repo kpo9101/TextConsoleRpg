@@ -158,6 +158,8 @@ void GameManager::battle(PlayerCharacter* player) {
         }
 
     }
+<<<<<<< HEAD
+=======
 
     // 몬스터 사망
     if (monster->getHealth() <= 0) {
@@ -189,5 +191,5 @@ void GameManager::displayInventory(PlayerCharacter* Player)
 {
     Player->ShowStatus();          
     std::cout << "[인벤토리]" << std::endl;
-
+>>>>>>> Release
 }

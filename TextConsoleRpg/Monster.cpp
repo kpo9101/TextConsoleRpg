@@ -6,8 +6,8 @@
 Slime::Slime(int level) 
 {
     name = "슬라임";
-    health = 200 + (level * 5);
-    attack = 5 + level;
+    health = 1;        // 원래 수치170 + (level * 30);
+    attack = 1;           // 원래 수치level * 10;
 }
 std::string Slime::getName() { return name; }
 int Slime::getHealth() { return health; }
@@ -24,8 +24,8 @@ void Slime::takeDamage(int damage)
 WildBoar::WildBoar(int level) 
 {
     name = "멧돼지";
-    health = 300 + (level * 5);
-    attack = 7 + level;
+    health = 1;  //원래 수치 150 + (level * 50);
+    attack = 5;        // 원래 수치5 + (level * 12);
 }
 std::string WildBoar::getName() { return name; }
 int WildBoar::getHealth() { return health; }
@@ -43,8 +43,8 @@ void WildBoar::takeDamage(int damage)
 ShadowKnight::ShadowKnight(int level)
 {
     name = "그림자 기사";
-    health = 800;
-    attack = 25;
+    health = 1; //원래 수치 1000
+    attack = 1; //원래 수치 100
 }
 std::string ShadowKnight::getName() { return name; }
 int ShadowKnight::getHealth() { return health; }
@@ -68,8 +68,8 @@ void ShadowKnight::takeDamage(int damage) { health -= damage; }
 DemonKing::DemonKing(int level)
 {
     name = "마왕";
-    health = 1200;
-    attack = 40;
+    health = 2000;
+    attack = 200;
 }
 std::string DemonKing::getName() { return name; }
 int DemonKing::getHealth() { return health; }
