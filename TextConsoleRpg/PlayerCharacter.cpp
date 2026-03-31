@@ -7,14 +7,14 @@
 #include <string>
 
 PlayerCharacter::PlayerCharacter(std::string name) :
-	  name(name)
-	, Level (1)
-	, Health (200)
-	, MaxHealth (200)
-	, Attack (30)
-	, Experience (0)
-	, Gold(100) 
-	, TempAttackBoost (0)
+	name(name)
+	, Level(1)
+	, Health(200)
+	, MaxHealth(200)
+	, Attack(30)
+	, Experience(0)
+	, Gold(100)
+	, TempAttackBoost(0)
 {
 	Game = new GameManager;
 	//기본 아이템 지급
@@ -73,15 +73,15 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 		}
 		if (num == 4)
 		{
-			Game->battle(this);          
-		
+			Game->battle(this);
+
 		}
 		if (num == 5)
 		{
 			OpenShop();
 		}
 
-			
+
 	}
 }
 void PlayerCharacter::ShowStatus()
@@ -140,11 +140,11 @@ bool PlayerCharacter::Heal(int amount)
 
 	Health += amount;
 
-	if(Health>MaxHealth)
-	
+	if (Health > MaxHealth)
+
 		Health = MaxHealth;
-	
-	std::cout << "체력 +" << (Health-before) << std::endl;
+
+	std::cout << "체력 +" << (Health - before) << std::endl;
 
 	return true;
 }
@@ -247,7 +247,7 @@ void PlayerCharacter::OpenShop()
 
 			Item item = inventory.GetItem(sell - 1);
 
-			int sellPrice = item.GetPrice() * 0.6; 
+			int sellPrice = (int)(item.GetPrice() * 0.6);
 
 			Gold += sellPrice;
 			inventory.RemoveItem(sell - 1);
@@ -290,16 +290,16 @@ void PlayerCharacter::AddItem(const Item& item)
 }
 
 
-bool PlayerCharacter::BattleItem()
+void PlayerCharacter::BattleItem()
 {
-	while (true)
 
+	while (1)
 	{
 		inventory.ShowItems();
 		if (inventory.IsEmpty())
 		{
 			std::cout << "아이템이 없습니다.\n";
-			return false;
+			return;
 		}
 
 		std::cout << "사용할 아이템 번호 선택 (0 입력시 취소) : ";
@@ -310,19 +310,19 @@ bool PlayerCharacter::BattleItem()
 		{
 			std::cin.clear();
 			std::cin.ignore(100, '\n');
-			std::cout << "숫자만 입력해주세요\n";
+			std::cout << "숫자만 입력해주세요";
 			continue;
 		}
 
 		if (choice == 0)
 		{
 			std::cout << " 아이템 사용 취소 \n" << std::endl;
-			return false;
+			return;
 		}
 
 		inventory.UseItem(choice - 1, *this);
-		return true;
 	}
+
 }
 
 std::string PlayerCharacter::GetName() const

@@ -51,6 +51,8 @@ Monster* GameManager::generateMonster(int level)
             return new WildBoar(level);
         }
     }
+  
+    return nullptr;
 }
 
 void GameManager::battle(PlayerCharacter* player) {
@@ -89,10 +91,8 @@ void GameManager::battle(PlayerCharacter* player) {
         }
         else if (choice == 2)
         {
-            if (!player->BattleItem())
-            {
-                continue;
-            }
+            player->BattleItem();
+     
         }
         else if (choice == 3)
         {
@@ -118,6 +118,11 @@ void GameManager::battle(PlayerCharacter* player) {
     // 몬스터 사망
     if (monster->getHealth() <= 0) {
         std::cout << " 전투 승리! " << monster->getName() << "을 물리쳤습니다!\n" << std::endl;
+
+            if (monster->getName() == "그림자 기사") {
+                player->GetExp(100);
+            }
+
         player->GetExp(50);
         player->Getgold(std::rand() % 51);
 
@@ -127,6 +132,7 @@ void GameManager::battle(PlayerCharacter* player) {
         else {
             player->AddItem(Item(ItemType::AttackBoost));
         }
+
 
         if (monster->getName() == "마왕") {
             std::cout << "\n GAME CLEAR!!!" << std::endl;

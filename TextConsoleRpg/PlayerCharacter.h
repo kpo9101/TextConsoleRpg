@@ -31,7 +31,7 @@ public:
 	void takeDamage(int damage);
 	int GetHealth() const;
 	void AddItem(const Item& item);
-	bool BattleItem();
+	void BattleItem();
 	std::string GetName() const;
 
 
