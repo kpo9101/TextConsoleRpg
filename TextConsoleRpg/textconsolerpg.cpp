@@ -6,15 +6,36 @@
 #include <ctime>
 #include <cstdlib>
 
+#include <windows.h>
+
+
+
 int main(void)
 {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, 0xCF);
+
+	// 화면 전체 배경색상으로
+	 system("cls");
+	
+	CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
+	GetConsoleScreenBufferInfo(hConsole, &consoleInfo);
+	SetConsoleTextAttribute(hConsole, consoleInfo.wAttributes);
+
 	std::srand(static_cast<unsigned int>(time(NULL))); // 현재 시간 기준으로 시드 초기화 (몬스터 순서가 동일하게 나와서 추가하였습니다.)
 	int select;
 	std::string Name;
 
-	std::cout << "평화롭던 '스파르타' 왕국에 갑자기 나타난 '마왕'이 왕국의 보물을 훔쳐 달아났습니다.\n 보물이 없으면 왕국의 결계가 깨져 몬스터들이 쳐들어오게 됩니다.\n 당신은 국왕의 부름을 받은 용사입니다.";
+	std::cout << " =======================================================================================" << std::endl;
+	std::cout << "|| 평화롭던 '스파르타' 왕국에 갑자기 나타난 '마왕'이 왕국의 보물을 훔쳐 달아났습니다.  ||" << std::endl;
+	std::cout << "|| 보물이 없으면 왕국의 결계가 깨져 몬스터들이 쳐들어오게 됩니다.                      ||" << std::endl;
+	std::cout << "|| 당신은 국왕의 부름을 받은 용사입니다.                                               ||" << std::endl;
+	std::cout << " =======================================================================================" << std::endl;
+
 	std::cout << std::endl << "용사님, 당신의 이름을 입력하십시오." << std::endl;
 	std::getline(std::cin, Name);
+
+
 	std::cout << "당신의 이름은 \"" << Name << "\" 이군요" << std::endl;
 
 	while (1)
@@ -47,5 +68,8 @@ int main(void)
 			continue;
 		}
 	}
+
+	
+
 	return 0;
 }

@@ -12,7 +12,7 @@ bool Item::Use(PlayerCharacter& player)
 		return player.Heal(50);
 
 	case ItemType::AttackBoost:
-		player.ApplyAttackBoost(10);
+		player.ApplyAttackBoost(50);
 		std::cout << "[아이템] 부스터(공격력,전투시에만 상승) 사용\n";
 		return true;
 	}

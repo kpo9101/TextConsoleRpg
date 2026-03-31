@@ -99,8 +99,8 @@ void PlayerCharacter::LevelUp()
 	std::cout << "축하합니다!! 레벨업!" << std::endl;
 	std::cout << "→ 현재 레벨 : " << Level + 1 << std::endl;
 	Level += 1;
-	Attack += 10;
-	MaxHealth += 50;
+	Attack += 20;
+	MaxHealth += 100;
 	Health = MaxHealth;
 
 	if (Level >= 10) {
@@ -293,7 +293,7 @@ void PlayerCharacter::AddItem(const Item& item)
 void PlayerCharacter::BattleItem()
 {
 
-	while (1)
+	while (true)
 	{
 		inventory.ShowItems();
 		if (inventory.IsEmpty())
@@ -320,11 +320,6 @@ void PlayerCharacter::BattleItem()
 			return;
 		}
 
-		if (choice > inventory.GetSize())
-		{
-			std::cout << "잘못된 선택\n";
-			return;
-		}
 		inventory.UseItem(choice - 1, *this);
 	}
 	
