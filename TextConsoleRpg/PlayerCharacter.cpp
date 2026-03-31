@@ -290,16 +290,15 @@ void PlayerCharacter::AddItem(const Item& item)
 }
 
 
-void PlayerCharacter::BattleItem()
+bool PlayerCharacter::BattleItem()
 {
-
 	while (1)
 	{
 		inventory.ShowItems();
 		if (inventory.IsEmpty())
 		{
 			std::cout << "아이템이 없습니다.\n";
-			return;
+			return false;
 		}
 
 		std::cout << "사용할 아이템 번호 선택 (0 입력시 취소) : ";
@@ -310,24 +309,25 @@ void PlayerCharacter::BattleItem()
 		{
 			std::cin.clear();
 			std::cin.ignore(100, '\n');
-			std::cout << "숫자만 입력해주세요";
+			std::cout << "숫자만 입력해주세요\n";
 			continue;
 		}
 
-		if (choice ==0)
+		if (choice == 0)
 		{
 			std::cout << " 아이템 사용 취소 \n" << std::endl;
-			return;
+			return false;
 		}
 
-		if (choice > inventory.GetSize())
+		if (choice > inventory.GetSize() || choice < 0)
 		{
 			std::cout << "잘못된 선택\n";
-			return;
+			continue;
 		}
+
 		inventory.UseItem(choice - 1, *this);
+		return true;
 	}
-	
 }
 
 std::string PlayerCharacter::GetName() const
