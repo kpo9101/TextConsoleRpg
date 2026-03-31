@@ -1,10 +1,7 @@
-// GameManager.cpp
-
 #include "GameManager.h"
 #include "PlayerCharacter.h"
 #include "Inventory.h"
 #include "MonsterAA.h"
-
 
 GameManager::GameManager() {
     static std::mt19937 rng(static_cast<unsigned>(std::time(nullptr)));
@@ -14,11 +11,11 @@ GameManager::~GameManager() {
 
 }
 
-Monster* GameManager::generateMonster(int level) 
+Monster* GameManager::generateMonster(int level)
 {
     std::cout << "\n";
 
-    if (level == 10) 
+    if (level == 10)
     {
         std::cout << "최종 보스 'DemonKing' 출현!!!" << std::endl;
         bClearDemonKing = true;
@@ -31,15 +28,28 @@ Monster* GameManager::generateMonster(int level)
         std::cout << MonsterAA::ShadowKnight << std::endl;
         return new ShadowKnight(level);
     }
-    else if (rand() % 2 == 0)
+    else if (level >= 1 && level <= 3)
     {
         std::cout << MonsterAA::Slime << std::endl;
         return new Slime(level);
     }
-    else
+    else if (level >= 4 && level <= 5)
     {
         std::cout << MonsterAA::WildBoar << std::endl;
         return new WildBoar(level);
+    }
+    else if (level >= 7 && level <= 9)
+    {
+        if (rand() % 2 == 0)
+        {
+            std::cout << MonsterAA::Slime << std::endl;
+            return new Slime(level);
+        }
+        else
+        {
+            std::cout << MonsterAA::WildBoar << std::endl;
+            return new WildBoar(level);
+        }
     }
 }
 
@@ -50,7 +60,7 @@ void GameManager::battle(PlayerCharacter* player) {
     int currentLevel = player->GetLevel();
     Monster* monster = generateMonster(currentLevel);
 
-    if (monster == nullptr) return;  
+    if (monster == nullptr) return;
 
     std::cout << monster->getName() << " [레벨 " << currentLevel << "] 등장!" << std::endl;
 
@@ -79,7 +89,10 @@ void GameManager::battle(PlayerCharacter* player) {
         }
         else if (choice == 2)
         {
-            player->BattleItem();
+            if (!player->BattleItem())
+            {
+                continue;
+            }
         }
         else if (choice == 3)
         {
@@ -102,61 +115,67 @@ void GameManager::battle(PlayerCharacter* player) {
         std::cout << "몬스터 HP: " << monster->getHealth() << std::endl;
     }
 
-            // 몬스터 사망
-                if (monster->getHealth() <= 0) {
-                    std::cout << " 전투 승리! " << monster->getName() << "을 물리쳤습니다!\n" << std::endl;
-                    player->GetExp(50);
-                    player->Getgold(std::rand() % 51);
+    // 몬스터 사망
+    if (monster->getHealth() <= 0) {
+        std::cout << " 전투 승리! " << monster->getName() << "을 물리쳤습니다!\n" << std::endl;
+        player->GetExp(50);
+        player->Getgold(std::rand() % 51);
 
-                    if (std::rand() % 2 == 0) {
-                        player->AddItem(Item(ItemType::Potion));
-                    }
-                    else {
-                        player->AddItem(Item(ItemType::AttackBoost));
-                    }
+        if (std::rand() % 2 == 0) {
+            player->AddItem(Item(ItemType::Potion));
+        }
+        else {
+            player->AddItem(Item(ItemType::AttackBoost));
+        }
 
-                    if (monster->getName() == "마왕") {
-                        std::cout << "\n GAME CLEAR!!!" << std::endl;
-                        exit(0);
-                    }
-                }
-            
-            else if(player->GetHealth() <=0 && monster->getHealth() > 0){
-                std::cout << "GAME OVER" << std::endl;
-                exit(0);
-                }
-            
-            // 소멸
-            player->ResetBattleState();
-            delete monster;
+        if (monster->getName() == "마왕") {
+            std::cout << "\n GAME CLEAR!!!" << std::endl;
+            exit(0);
+        }
+    }
 
-            int choice;
-            while (true)
-            {
-                std::cout << "\n상점을 이용하시겠습니까? (네 : 1/아니요 : 2): ";
-                std::cin >> choice;
+    else if (player->GetHealth() <= 0 && monster->getHealth() > 0) {
+        std::cout << "GAME OVER" << std::endl;
+        exit(0);
+    }
 
-                if (choice == 1 )
-                {
-                    player->OpenShop();
-                    break;
-                }
-                else if (choice == 2)
-                {
-                    std::cout << "상점을 이용하지 않습니다.\n";
-                    break;
-                }
-                else
-                {
-                    std::cout << "1 또는 2만 입력하세요.\n";
-                }
-            }
+    // 소멸
+    player->ResetBattleState();
+    delete monster;
+
+    int shopChoice;
+    while (true)
+    {
+        std::cout << "\n상점을 이용하시겠습니까? (네 : 1/아니요 : 2): ";
+        std::cin >> shopChoice;
+
+        if (std::cin.fail())
+        {
+            std::cin.clear();
+            std::cin.ignore(100, '\n');
+            continue;
+        }
+
+        if (shopChoice == 1)
+        {
+            player->OpenShop();
+            break;
+        }
+        else if (shopChoice == 2)
+        {
+            std::cout << "상점을 이용하지 않습니다.\n";
+            break;
+        }
+        else
+        {
+            std::cout << "1 또는 2만 입력하세요.\n";
+        }
+    }
 }
 
 
 void GameManager::displayInventory(PlayerCharacter* Player)
 {
-    Player->ShowStatus();          
+    Player->ShowStatus();
     std::cout << "[인벤토리]" << std::endl;
-
 }
