@@ -13,7 +13,7 @@
 int main(void)
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, 0xCF);
+	SetConsoleTextAttribute(hConsole, 0x0C);
 
 	// 화면 전체 배경색상으로
 	 system("cls");

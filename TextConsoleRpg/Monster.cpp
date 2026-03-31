@@ -15,6 +15,7 @@ std::string Slime::getName() { return name; }
 int Slime::getHealth() { return health; }
 int Slime::getAttack() 
 {
+    std::cout << "-----------------------------------" << std::endl;
     std::cout << name << "의 공격! (" << attack << " 데미지)" << std::endl;
     return attack;
 }

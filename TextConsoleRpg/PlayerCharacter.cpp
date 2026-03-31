@@ -24,12 +24,15 @@ PlayerCharacter::PlayerCharacter(std::string name) :
 	while (true)
 	{
 		int num = 0;
-		std::cout << "무엇을 할까?" << std::endl;
-		std::cout << "[1]나의 정보 확인" << std::endl;
-		std::cout << "[2]아이템 확인" << std::endl;
-		std::cout << "[3]게임 로그 확인" << std::endl;
-		std::cout << "[4]전투" << std::endl;
-		std::cout << "[5]상점" << std::endl;
+
+		std::cout << "=====================" << std::endl;
+		std::cout << "||무엇을 할까?     ||" << std::endl;
+		std::cout << "||[1]나의 정보 확인||" << std::endl;
+		std::cout << "||[2]아이템 확인   ||" << std::endl;
+		std::cout << "||[3]게임 로그 확인||" << std::endl;
+		std::cout << "||[4]전투          ||" << std::endl;
+		std::cout << "||[5]상점          ||" << std::endl;
+		std::cout << "=====================" << std::endl;
 		std::cin >> num;
 		if (std::cin.fail())
 		{

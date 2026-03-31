@@ -67,10 +67,14 @@ void GameManager::battle(PlayerCharacter* player) {
     std::cout << monster->getName() << " [레벨 " << currentLevel << "] 등장!" << std::endl;
 
     while (monster->getHealth() > 0 && player->GetHealth() > 0) {
-        std::cout << " 당신의 선택은?" << std::endl;
-        std::cout << " 1. 공격" << std::endl;
-        std::cout << " 2. 아이템 사용" << std::endl;
-        std::cout << " 3. Run" << std::endl;
+
+
+        std::cout << "=====================" << std::endl;
+        std::cout << "|| 당신의 선택은?  ||" << std::endl;
+        std::cout << "|| 1. 공격         ||" << std::endl;
+        std::cout << "|| 2. 아이템 사용  ||" << std::endl;
+        std::cout << "|| 3. Run          ||" << std::endl;
+        std::cout << "=====================" << std::endl;
 
         int choice;
         std::cin >> choice;
@@ -87,7 +91,10 @@ void GameManager::battle(PlayerCharacter* player) {
         {
             int playerDamage = player->GetTotalAttack();
             monster->takeDamage(playerDamage);
+
+            std::cout << "###########################################" << std::endl;
             std::cout << "[" << player->GetName() << "] 공격! \n" << monster->getName() << "에게" << playerDamage << " 데미지 주었다!" << std::endl;
+            
         }
         else if (choice == 2)
         {
@@ -107,12 +114,14 @@ void GameManager::battle(PlayerCharacter* player) {
         if (monster->getHealth() <= 0) break;
         // 몬스터 hp 0 확인
 
-        std::cout << "\n--- " << monster->getName() << "공격" << std::endl;
+
+        
         int monsterDamage = monster->getAttack();
         player->takeDamage(monsterDamage);
 
         std::cout << "플레이어 HP: " << player->GetHealth() << std::endl;
         std::cout << "몬스터 HP: " << monster->getHealth() << std::endl;
+        std::cout << "###########################################" << std::endl;
     }
 
     // 몬스터 사망
